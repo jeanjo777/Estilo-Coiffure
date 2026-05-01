@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
@@ -10,7 +10,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="css/style.css?v=20260501-1">
+  <link rel="preload" as="image" href="images/videos/hero-premium-poster.jpg">
+  <link rel="stylesheet" href="css/style.css?v=20260501-2">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230e0e0e'/%3E%3Ctext x='50%25' y='56%25' text-anchor='middle' font-family='Georgia, serif' font-size='34' fill='%23c8a46e'%3EE%3C/text%3E%3C/svg%3E">
 </head>
 <body>
@@ -38,20 +39,45 @@
   </nav>
 
   <!-- Hero -->
-  <section class="hero" id="hero">
-    <div class="hero__overlay"></div>
-    <div class="hero__content">
-      <p class="hero__tagline">Salon de Coiffure</p>
-      <h1 class="hero__title">Estilo<span class="hero__dot">.</span></h1>
-      <p class="hero__subtitle">L'art de sublimer votre style — Québec</p>
-      <div class="hero__actions">
-        <a href="#contact" class="btn btn--primary">Prendre Rendez-vous</a>
-        <a href="#services" class="btn btn--outline">Nos Services</a>
+  <section class="hero-scrollstop" id="hero">
+    <div class="hero hero--premium">
+      <div class="hero__media" aria-hidden="true">
+        <video
+          class="hero__video"
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="metadata"
+          poster="images/videos/hero-premium-poster.jpg"
+          disablepictureinpicture
+        >
+          <source src="images/videos/hero-premium.mp4" type="video/mp4">
+        </video>
       </div>
-    </div>
-    <div class="hero__scroll">
-      <span>Découvrir</span>
-      <div class="hero__scroll-line"></div>
+      <div class="hero__grain" aria-hidden="true"></div>
+      <div class="hero__glow" aria-hidden="true"></div>
+      <div class="hero__frame" aria-hidden="true"></div>
+      <div class="hero__overlay"></div>
+      <div class="hero__content">
+        <p class="hero__tagline">Salon de Coiffure</p>
+        <h1 class="hero__title">Estilo<span class="hero__dot">.</span></h1>
+        <p class="hero__subtitle">L'art de sublimer votre style — Québec</p>
+        <p class="hero__lead">Colorations signature, lumière miroir, finitions premium et gestes précis dès le premier scroll.</p>
+        <div class="hero__actions">
+          <a href="#contact" class="btn btn--primary">Prendre Rendez-vous</a>
+          <a href="#services" class="btn btn--outline">Nos Services</a>
+        </div>
+      </div>
+      <aside class="hero__spotlight" aria-label="Signature Estilo">
+        <span class="hero__spotlight-label">Signature Estilo</span>
+        <strong class="hero__spotlight-title">Blond luxe. Texture satin.</strong>
+        <p class="hero__spotlight-copy">Vidéo choisie: mouvement plus fluide, fond plus cinéma, impact plus premium dans le hero.</p>
+      </aside>
+      <div class="hero__scroll">
+        <span>Découvrir</span>
+        <div class="hero__scroll-line"></div>
+      </div>
     </div>
   </section>
 
@@ -538,6 +564,9 @@
     </div>
   </footer>
 
-  <script src="js/main.js"></script>
+  <script src="js/main.js?v=20260501-2"></script>
 </body>
 </html>
+
+
+

@@ -17,6 +17,66 @@
   }
 
   window.addEventListener('scroll', handleNavScroll, { passive: true });
+  handleNavScroll();
+
+  /* --- Premium hero scroll-stop --- */
+  const heroScrollStop = document.querySelector('.hero-scrollstop');
+  const heroPanel = heroScrollStop ? heroScrollStop.querySelector('.hero--premium') : null;
+  const heroVideo = heroScrollStop ? heroScrollStop.querySelector('.hero__video') : null;
+  const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  function syncHeroScrollStop() {
+    if (!heroScrollStop || !heroPanel) return;
+
+    const totalScroll = Math.max(heroScrollStop.offsetHeight - window.innerHeight, 1);
+    const currentScroll = Math.min(Math.max(window.scrollY - heroScrollStop.offsetTop, 0), totalScroll);
+    const progress = currentScroll / totalScroll;
+
+    heroPanel.style.setProperty('--hero-progress', progress.toFixed(4));
+  }
+
+  function syncHeroVideoPlayback() {
+    if (!heroScrollStop || !heroVideo) return;
+
+    if (reducedMotionQuery.matches) {
+      heroVideo.pause();
+      return;
+    }
+
+    heroVideo.playbackRate = 0.82;
+
+    const rect = heroScrollStop.getBoundingClientRect();
+    const isVisible = rect.bottom > 0 && rect.top < window.innerHeight;
+
+    if (isVisible) {
+      const playAttempt = heroVideo.play();
+      if (playAttempt && typeof playAttempt.catch === 'function') {
+        playAttempt.catch(function () {});
+      }
+    } else if (!heroVideo.paused) {
+      heroVideo.pause();
+    }
+  }
+
+  function handleHeroViewport() {
+    syncHeroScrollStop();
+    syncHeroVideoPlayback();
+  }
+
+  if (heroVideo) {
+    heroVideo.playbackRate = 0.82;
+    heroVideo.addEventListener('loadeddata', syncHeroVideoPlayback, { once: true });
+
+    if (typeof reducedMotionQuery.addEventListener === 'function') {
+      reducedMotionQuery.addEventListener('change', handleHeroViewport);
+    } else if (typeof reducedMotionQuery.addListener === 'function') {
+      reducedMotionQuery.addListener(handleHeroViewport);
+    }
+  }
+
+  window.addEventListener('scroll', handleHeroViewport, { passive: true });
+  window.addEventListener('resize', handleHeroViewport);
+  handleHeroViewport();
 
   /* --- Mobile menu toggle --- */
   const navToggle = document.getElementById('navToggle');
