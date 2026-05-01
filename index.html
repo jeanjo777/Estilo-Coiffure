@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Estilo Coiffure — Salon de coiffure à Québec. 7930 1re Avenue. Coupes, colorations, soins capillaires et bien plus. Appelez le (418) 204-0777.">
+  <title>Estilo Coiffure | Salon de Coiffure à Québec</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css?v=20260501-1">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230e0e0e'/%3E%3Ctext x='50%25' y='56%25' text-anchor='middle' font-family='Georgia, serif' font-size='34' fill='%23c8a46e'%3EE%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav" id="nav">
+    <div class="nav__container">
+      <a href="#hero" class="nav__logo">Estilo<span>.</span></a>
+      <button class="nav__toggle" id="navToggle" aria-label="Ouvrir le menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav__menu" id="navMenu" role="list">
+        <li><a href="#about" class="nav__link">Le Salon</a></li>
+        <li><a href="#team" class="nav__link">L'Équipe</a></li>
+        <li><a href="#services" class="nav__link">Services</a></li>
+        <li><a href="#gallery" class="nav__link">Galerie</a></li>
+        <li><a href="produits.html" class="nav__link">Produits</a></li>
+        <li><a href="simulateur.html" class="nav__link">Simulateur</a></li>
+        <li><a href="#hours" class="nav__link">Horaires</a></li>
+        <li><a href="#contact" class="nav__link nav__link--cta">Réserver</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero" id="hero">
+    <div class="hero__overlay"></div>
+    <div class="hero__content">
+      <p class="hero__tagline">Salon de Coiffure</p>
+      <h1 class="hero__title">Estilo<span class="hero__dot">.</span></h1>
+      <p class="hero__subtitle">L'art de sublimer votre style — Québec</p>
+      <div class="hero__actions">
+        <a href="#contact" class="btn btn--primary">Prendre Rendez-vous</a>
+        <a href="#services" class="btn btn--outline">Nos Services</a>
+      </div>
+    </div>
+    <div class="hero__scroll">
+      <span>Découvrir</span>
+      <div class="hero__scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="about__grid">
+        <div class="about__visual">
+          <img src="images/proprietaire.png" alt="Propriétaire d'Estilo Coiffure dans le salon" class="about__image" width="600" height="800" loading="lazy">
+          <div class="about__accent"></div>
+        </div>
+        <div class="about__text">
+          <p class="section-label">Notre Salon</p>
+          <h2 class="section-title">Un espace dédié<br>à votre <em>style</em></h2>
+          <p class="about__description">
+            Chez Estilo Coiffure, chaque visite est une expérience unique. Situé
+            au cœur de Québec sur la 1re Avenue, notre salon vous accueille dans
+            un cadre moderne et chaleureux.
+          </p>
+          <p class="about__description">
+            Notre équipe de professionnels passionnés transforme chaque cheveu
+            en œuvre d'art. Coupes, colorations, soins — laissez-vous emporter
+            par la magie Estilo.
+          </p>
+          <div class="about__stats">
+            <div class="about__stat">
+              <span class="about__stat-number" data-count="10">0</span><span class="about__stat-suffix">+</span>
+              <span class="about__stat-label">Années d'expérience</span>
+            </div>
+            <div class="about__stat">
+              <span class="about__stat-number" data-count="2000">0</span><span class="about__stat-suffix">+</span>
+              <span class="about__stat-label">Clients satisfaits</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team -->
+  <section class="team" id="team">
+    <div class="container">
+      <p class="section-label">Les artistes derrière votre style</p>
+      <h2 class="section-title">L'<em>Équipe</em></h2>
+    </div>
+    <div class="marquee" aria-label="Défilement de l'équipe">
+      <div class="marquee__track">
+
+        <article class="team__member">
+          <div class="team__photo">
+            <img src="images/carlos.jpg" alt="Carlos, spécialiste coupes chez Estilo Coiffure" width="400" height="500" loading="lazy">
+          </div>
+          <div class="team__info">
+            <h3 class="team__name">Carlos</h3>
+            <p class="team__role">Maître Coiffeur &mdash; Coupes</p>
+            <p class="team__bio">
+              Les coupes de Carlos sont une pure magie. Son talent et sa créativité
+              transforment chaque cheveu en œuvre d'art.
+            </p>
+          </div>
+        </article>
+
+        <article class="team__member">
+          <div class="team__photo">
+            <img src="images/antonio.png" alt="Antonio, spécialiste colorimétrie chez Estilo Coiffure" width="400" height="500" loading="lazy">
+          </div>
+          <div class="team__info">
+            <h3 class="team__name">Antonio</h3>
+            <p class="team__role">Expert Colorimétrie</p>
+            <p class="team__bio">
+              L'art de la colorimétrie a un nom : Antonio. Des nuances uniques,
+              tout simplement impressionnantes.
+            </p>
+          </div>
+        </article>
+
+        <article class="team__member">
+          <div class="team__photo">
+            <img src="images/daniela.jpg" alt="Daniela, coiffeuse chez Estilo Coiffure" width="400" height="500" loading="lazy">
+          </div>
+          <div class="team__info">
+            <h3 class="team__name">Daniela</h3>
+            <p class="team__role">Coiffeuse &mdash; Styliste</p>
+            <p class="team__bio">
+              Chaque client repart avec le sourire. Venez découvrir la magie de
+              Daniela et transformez votre look.
+            </p>
+          </div>
+        </article>
+
+        <article class="team__member">
+          <div class="team__photo">
+            <img src="images/franco.png" alt="Franco, spécialiste couleur chez Estilo Coiffure" width="400" height="500" loading="lazy">
+          </div>
+          <div class="team__info">
+            <h3 class="team__name">Franco</h3>
+            <p class="team__role">Artiste Couleur</p>
+            <p class="team__bio">
+              Un véritable artiste de la couleur. Laissez-vous surprendre par sa
+              magie et découvrez votre meilleure version.
+            </p>
+          </div>
+        </article>
+
+        <article class="team__member">
+          <div class="team__photo">
+            <img src="images/marco.jpg" alt="Marco, spécialiste coupes homme chez Estilo Coiffure" width="400" height="500" loading="lazy">
+          </div>
+          <div class="team__info">
+            <h3 class="team__name">Marco</h3>
+            <p class="team__role">Spécialiste Coupes Homme</p>
+            <p class="team__bio">
+              Le spécialiste des coupes homme. Souci du détail et style moderne
+              pour un look impeccable.
+            </p>
+          </div>
+        </article>
+
+        <!-- Duplicatas pour boucle infinie -->
+        <article class="team__member" aria-hidden="true">
+          <div class="team__photo">
+            <img src="images/carlos.jpg" alt="" width="400" height="500" loading="lazy">
+          </div>
+          <div class="team__info">
+            <h3 class="team__name">Carlos</h3>
+            <p class="team__role">Maître Coiffeur &mdash; Coupes</p>
+            <p class="team__bio">
+              Les coupes de Carlos sont une pure magie. Son talent et sa créativité
+              transforment chaque cheveu en œuvre d'art.
+            </p>
+          </div>
+        </article>
+
+        <article class="team__member" aria-hidden="true">
+          <div class="team__photo">
+            <img src="images/antonio.png" alt="" width="400" height="500" loading="lazy">
+          </div>
+          <div class="team__info">
+            <h3 class="team__name">Antonio</h3>
+            <p class="team__role">Expert Colorimétrie</p>
+            <p class="team__bio">
+              L'art de la colorimétrie a un nom : Antonio. Des nuances uniques,
+              tout simplement impressionnantes.
+            </p>
+          </div>
+        </article>
+
+        <article class="team__member" aria-hidden="true">
+          <div class="team__photo">
+            <img src="images/daniela.jpg" alt="" width="400" height="500" loading="lazy">
+          </div>
+          <div class="team__info">
+            <h3 class="team__name">Daniela</h3>
+            <p class="team__role">Coiffeuse &mdash; Styliste</p>
+            <p class="team__bio">
+              Chaque client repart avec le sourire. Venez découvrir la magie de
+              Daniela et transformez votre look.
+            </p>
+          </div>
+        </article>
+
+        <article class="team__member" aria-hidden="true">
+          <div class="team__photo">
+            <img src="images/franco.png" alt="" width="400" height="500" loading="lazy">
+          </div>
+          <div class="team__info">
+            <h3 class="team__name">Franco</h3>
+            <p class="team__role">Artiste Couleur</p>
+            <p class="team__bio">
+              Un véritable artiste de la couleur. Laissez-vous surprendre par sa
+              magie et découvrez votre meilleure version.
+            </p>
+          </div>
+        </article>
+
+        <article class="team__member" aria-hidden="true">
+          <div class="team__photo">
+            <img src="images/marco.jpg" alt="" width="400" height="500" loading="lazy">
+          </div>
+          <div class="team__info">
+            <h3 class="team__name">Marco</h3>
+            <p class="team__role">Spécialiste Coupes Homme</p>
+            <p class="team__bio">
+              Le spécialiste des coupes homme. Souci du détail et style moderne
+              pour un look impeccable.
+            </p>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="services" id="services">
+    <div class="container">
+      <p class="section-label">Ce que nous proposons</p>
+      <h2 class="section-title">Nos <em>Services</em></h2>
+
+      <div class="services__grid">
+
+        <article class="service-card">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="32" height="32">
+              <path d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/>
+            </svg>
+          </div>
+          <h3 class="service-card__title">Coupes</h3>
+          <p class="service-card__desc">Coupes femme, homme et enfant. Frange, dégradé, carré — un style sur mesure pour chacun.</p>
+          <div class="service-card__price">À partir de <strong>15$</strong></div>
+        </article>
+
+        <article class="service-card">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="32" height="32">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M12 2a10 10 0 010 20"/>
+              <path d="M12 8v8"/>
+            </svg>
+          </div>
+          <h3 class="service-card__title">Coloration</h3>
+          <p class="service-card__desc">Couleur complète, mèches, balayage, ombré — des techniques modernes pour un résultat naturel ou audacieux.</p>
+          <div class="service-card__price">À partir de <strong>35$</strong></div>
+        </article>
+
+        <article class="service-card">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="32" height="32">
+              <path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+            </svg>
+          </div>
+          <h3 class="service-card__title">Soins</h3>
+          <p class="service-card__desc">Soins profonds, masques nourrissants, traitements kératine — redonnez vie à vos cheveux.</p>
+          <div class="service-card__price">À partir de <strong>20$</strong></div>
+        </article>
+
+        <article class="service-card">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="32" height="32">
+              <path d="M5 3v4M3 5h4M6 17v4M4 19h4M13 3l2 2 4-4M17 17l2 2 4-4"/>
+            </svg>
+          </div>
+          <h3 class="service-card__title">Coiffure Événementielle</h3>
+          <p class="service-card__desc">Mariage, soirée, cérémonie — des coiffures sophistiquées pour vos moments inoubliables.</p>
+          <div class="service-card__price">À partir de <strong>45$</strong></div>
+        </article>
+
+        <article class="service-card">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="32" height="32">
+              <rect x="3" y="3" width="18" height="18" rx="2"/>
+              <path d="M3 9h18M9 21V9"/>
+            </svg>
+          </div>
+          <h3 class="service-card__title">Lissage</h3>
+          <p class="service-card__desc">Lissage brésilien, japonais ou tanin — des cheveux lisses et brillants qui durent.</p>
+          <div class="service-card__price">À partir de <strong>80$</strong></div>
+        </article>
+
+        <article class="service-card">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="32" height="32">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+            </svg>
+          </div>
+          <h3 class="service-card__title">Extensions</h3>
+          <p class="service-card__desc">Extensions naturelles à chaud, à froid ou à clips — du volume et de la longueur en un instant.</p>
+          <div class="service-card__price">Sur devis</div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section class="gallery" id="gallery">
+    <div class="container">
+      <p class="section-label">Nos Réalisations</p>
+      <h2 class="section-title">La <em>Galerie</em></h2>
+      <div class="gallery__grid">
+        <div class="gallery__item"><img src="images/Galeries/4.png" alt="Coloration balayage" loading="lazy"></div>
+        <div class="gallery__item"><img src="images/Galeries/55.jpg" alt="Lissage cheveux longs" loading="lazy"></div>
+        <div class="gallery__item"><img src="images/Galeries/5.png" alt="Réalisation coiffure" loading="lazy"></div>
+        <div class="gallery__item"><img src="images/Galeries/2.png" alt="Réalisation coiffure" loading="lazy"></div>
+        <div class="gallery__item"><img src="images/Galeries/3.png" alt="Réalisation coiffure" loading="lazy"></div>
+        <div class="gallery__item"><img src="images/Galeries/6.png" alt="Réalisation coiffure" loading="lazy"></div>
+        <div class="gallery__item"><img src="images/Galeries/7.png" alt="Réalisation coiffure" loading="lazy"></div>
+        <div class="gallery__item"><img src="images/Galeries/10.png" alt="Réalisation coiffure" loading="lazy"></div>
+        <div class="gallery__item"><img src="images/Galeries/11.png" alt="Réalisation coiffure" loading="lazy"></div>
+        <div class="gallery__item"><img src="images/Galeries/12.png" alt="Réalisation coiffure" loading="lazy"></div>
+        <div class="gallery__item"><img src="images/Galeries/13.png" alt="Réalisation coiffure" loading="lazy"></div>
+        <div class="gallery__item"><img src="images/Galeries/14.png" alt="Réalisation coiffure" loading="lazy"></div>
+        <div class="gallery__item"><img src="images/Galeries/1.png" alt="Manucure" loading="lazy"></div>
+        <div class="gallery__item"><img src="images/Galeries/56.jpg" alt="Réalisation coiffure" loading="lazy"></div>
+        <div class="gallery__item"><img src="images/Galeries/125.png" alt="Réalisation coiffure" loading="lazy"></div>
+        <div class="gallery__item"><img src="images/Galeries/133.png" alt="Réalisation coiffure" loading="lazy"></div>
+        <div class="gallery__item"><img src="images/Galeries/1222.png" alt="Réalisation coiffure" loading="lazy"></div>
+        <div class="gallery__item"><img src="images/Galeries/1254.png" alt="Réalisation coiffure" loading="lazy"></div>
+        <div class="gallery__item"><img src="images/Galeries/425.png" alt="Réalisation coiffure" loading="lazy"></div>
+        <div class="gallery__item"><img src="images/Galeries/8.png" alt="Réalisation coiffure" loading="lazy"></div>
+        <div class="gallery__item"><img src="images/Galeries/Nano_Banana_2___change_le_visage_des_coiff_s_assis.png" alt="Réalisation coiffure" loading="lazy"></div>
+        <div class="gallery__item"><img src="images/Galeries/493687015_1251721516958265_9175374067440605244_n.jpg" alt="Réalisation coiffure" loading="lazy"></div>
+        <div class="gallery__item"><img src="images/Galeries/517453085_10171878129400252_2340539612442312744_n.jpg" alt="Réalisation coiffure" loading="lazy"></div>
+        <div class="gallery__item"><img src="images/Galeries/518612883_10171862305480252_612085110038786387_n.jpg" alt="Réalisation coiffure" loading="lazy"></div>
+        <div class="gallery__item"><img src="images/Galeries/468208095_18346491244123034_1383476278973946465_n.jpg" alt="Réalisation coiffure" loading="lazy"></div>
+        <div class="gallery__item"><img src="images/Galeries/462882212_18340840180123034_4928415672142434941_n.jpg" alt="Réalisation coiffure" loading="lazy"></div>
+        <div class="gallery__item"><img src="images/Galeries/452050957_18329719207123034_2752126120684360898_n.jpg" alt="Réalisation coiffure" loading="lazy"></div>
+        <div class="gallery__item"><img src="images/Galeries/450407129_18328341946123034_8487431351696285433_n.jpg" alt="Réalisation coiffure" loading="lazy"></div>
+        <div class="gallery__item"><img src="images/Galeries/480504180_9489343727796584_689958279900670839_n.jpg" alt="Réalisation coiffure" loading="lazy"></div>
+        <div class="gallery__item"><img src="images/Galeries/481070810_1190145413115876_8307748245531427010_n.jpg" alt="Réalisation coiffure" loading="lazy"></div>
+        <div class="gallery__item"><img src="images/Galeries/474187735_18353670076123034_5195265271862716513_n.jpg" alt="Réalisation coiffure" loading="lazy"></div>
+        <div class="gallery__item"><img src="images/Galeries/467827083_18345906223123034_8153346562521081104_n.jpg" alt="Réalisation coiffure" loading="lazy"></div>
+        <div class="gallery__item"><img src="images/Galeries/467816837_18345906232123034_6889581548952440722_n.jpg" alt="Réalisation coiffure" loading="lazy"></div>
+        <div class="gallery__item"><img src="images/Galeries/467734199_18345905254123034_8265112207379859657_n.jpg" alt="Réalisation coiffure" loading="lazy"></div>
+        <div class="gallery__item"><img src="images/Galeries/465376081_18343682551123034_5400466007812828299_n.jpg" alt="Réalisation coiffure" loading="lazy"></div>
+        <div class="gallery__item"><img src="images/Galeries/465311362_18343682539123034_1300248709035489610_n.jpg" alt="Réalisation coiffure" loading="lazy"></div>
+      </div>
+      <p class="gallery__cta">
+        Retrouvez plus de photos sur notre
+        <a href="https://www.facebook.com/profile.php?id=100063612851762&sk=photos" target="_blank" rel="noopener noreferrer">page Facebook</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- Hours & Location -->
+  <section class="hours" id="hours">
+    <div class="container">
+      <div class="hours__grid">
+        <div class="hours__info">
+          <p class="section-label">Quand nous voir</p>
+          <h2 class="section-title">Horaires &<br><em>Accès</em></h2>
+          <table class="hours__table">
+            <tbody>
+              <tr>
+                <td>Lundi</td>
+                <td>Fermé</td>
+              </tr>
+              <tr>
+                <td>Mardi</td>
+                <td>10h00 – 17h30</td>
+              </tr>
+              <tr>
+                <td>Mercredi</td>
+                <td>10h00 – 17h30</td>
+              </tr>
+              <tr>
+                <td>Jeudi</td>
+                <td>10h00 – 20h00</td>
+              </tr>
+              <tr>
+                <td>Vendredi</td>
+                <td>10h00 – 20h00</td>
+              </tr>
+              <tr>
+                <td>Samedi</td>
+                <td>10h00 – 17h30</td>
+              </tr>
+              <tr>
+                <td>Dimanche</td>
+                <td>Fermé</td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="hours__note">* Horaires susceptibles de varier. Contactez-nous pour confirmer.</p>
+        </div>
+        <div class="hours__map">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2729.5!2d-71.15!3d46.86!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2s7930+1re+Avenue%2C+Qu%C3%A9bec%2C+QC+G1C+2Y4!5e0!3m2!1sfr!2sca!4v1"
+            width="100%"
+            height="100%"
+            style="border:0; border-radius: 8px; min-height: 350px;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Localisation Estilo Coiffure — 7930 1re Avenue, Québec">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="contact__grid">
+        <div class="contact__info">
+          <p class="section-label">Prenez contact</p>
+          <h2 class="section-title">Réservez votre<br><em>rendez-vous</em></h2>
+          <div class="contact__methods">
+            <a href="tel:+14182040777" class="contact__method">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20">
+                <path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+              </svg>
+              <span>(418) 204-0777</span>
+            </a>
+            <a href="mailto:estilocoiffure@gmail.com" class="contact__method">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20">
+                <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+              </svg>
+              <span>estilocoiffure@gmail.com</span>
+            </a>
+            <a href="https://m.me/100063612851762" target="_blank" rel="noopener noreferrer" class="contact__method">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                <path d="M12 2C6.36 2 2 6.13 2 11.7c0 2.91 1.2 5.42 3.15 7.2V22l2.96-1.63c.84.23 1.72.35 2.64.35h.25c5.64 0 10-4.13 10-9.7S17.64 2 12 2zm1.07 13.07l-2.54-2.72L5.8 15.07l4.97-5.28 2.6 2.72 4.67-2.72-4.97 5.28z"/>
+              </svg>
+              <span>Messenger</span>
+            </a>
+            <a href="https://www.facebook.com/profile.php?id=100063612851762" target="_blank" rel="noopener noreferrer" class="contact__method">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+              </svg>
+              <span>Facebook</span>
+            </a>
+            <div class="contact__method contact__method--address">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20">
+                <path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                <path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+              </svg>
+              <span>7930 1re Avenue, Québec, QC G1C 2Y4</span>
+            </div>
+          </div>
+        </div>
+        <form class="contact__form" id="contactForm" novalidate>
+          <div class="form__group">
+            <label for="name" class="form__label">Nom</label>
+            <input type="text" id="name" name="name" class="form__input" required autocomplete="name">
+          </div>
+          <div class="form__group">
+            <label for="phone" class="form__label">Téléphone</label>
+            <input type="tel" id="phone" name="phone" class="form__input" required autocomplete="tel">
+          </div>
+          <div class="form__group">
+            <label for="service" class="form__label">Service souhaité</label>
+            <select id="service" name="service" class="form__input form__select" required>
+              <option value="">Choisir un service</option>
+              <option value="coupe">Coupe</option>
+              <option value="coloration">Coloration</option>
+              <option value="soin">Soin</option>
+              <option value="lissage">Lissage</option>
+              <option value="evenement">Coiffure Événementielle</option>
+              <option value="extensions">Extensions</option>
+              <option value="autre">Autre</option>
+            </select>
+          </div>
+          <div class="form__group">
+            <label for="message" class="form__label">Message <span class="form__optional">(optionnel)</span></label>
+            <textarea id="message" name="message" class="form__input form__textarea" rows="4"></textarea>
+          </div>
+          <button type="submit" class="btn btn--primary btn--full">Envoyer la demande</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a href="#hero" class="footer__logo">Estilo<span>.</span></a>
+          <p class="footer__tagline">L'art de sublimer votre style</p>
+        </div>
+        <nav class="footer__nav" aria-label="Navigation pied de page">
+          <a href="#about">Le Salon</a>
+          <a href="#team">L'Équipe</a>
+          <a href="#services">Services</a>
+          <a href="#gallery">Galerie</a>
+          <a href="produits.html">Produits</a>
+          <a href="simulateur.html">Simulateur</a>
+          <a href="#hours">Horaires</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <div class="footer__social">
+          <a href="https://www.facebook.com/profile.php?id=100063612851762" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+              <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>&copy; 2026 Estilo Coiffure. Tous droits réservés.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

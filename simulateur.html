@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Estilo Coiffure — Simulateur de coiffure IA. Visualisez votre nouvelle coiffure avant de réserver.">
+  <title>Simulateur de Coiffure | Estilo Coiffure</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css?v=20260501-1">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230e0e0e'/%3E%3Ctext x='50%25' y='56%25' text-anchor='middle' font-family='Georgia, serif' font-size='34' fill='%23c8a46e'%3EE%3C/text%3E%3C/svg%3E">
+  <style>
+    /* --- Simulateur --- */
+    .sim-hero {
+      padding: calc(var(--nav-height) + var(--space-2xl)) 0 var(--space-xl);
+      text-align: center;
+      background:
+        radial-gradient(ellipse at 50% 30%, rgba(200, 164, 110, 0.06) 0%, transparent 60%),
+        var(--color-bg);
+    }
+
+    .sim-hero__subtitle {
+      font-size: var(--text-base);
+      color: var(--color-text-muted);
+      max-width: 55ch;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    .sim-steps {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-lg);
+      margin-top: var(--space-lg);
+      flex-wrap: wrap;
+    }
+
+    .sim-step {
+      display: flex;
+      align-items: center;
+      gap: var(--space-xs);
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+    }
+
+    .sim-step__number {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background-color: var(--color-accent);
+      color: var(--color-bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: var(--text-xs);
+      flex-shrink: 0;
+    }
+
+    /* --- S&eacute;lection du genre --- */
+    .sim-gender {
+      padding: var(--space-xl) 0 var(--space-section);
+    }
+
+    .sim-gender__title {
+      font-family: var(--font-display);
+      font-size: var(--text-2xl);
+      text-align: center;
+      margin-bottom: var(--space-sm);
+    }
+
+    .sim-gender__subtitle {
+      text-align: center;
+      color: var(--color-text-muted);
+      font-size: var(--text-sm);
+      margin-bottom: var(--space-xl);
+    }
+
+    .sim-gender__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-lg);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .sim-gender__card {
+      position: relative;
+      background-color: var(--color-bg-card);
+      border: 2px solid var(--color-surface);
+      border-radius: var(--radius-md);
+      padding: var(--space-2xl) var(--space-lg);
+      text-align: center;
+      cursor: pointer;
+      transition: all var(--duration-normal) var(--ease-out);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-md);
+      min-height: 320px;
+      justify-content: center;
+    }
+
+    .sim-gender__card:hover {
+      border-color: var(--color-accent);
+      background-color: rgba(200, 164, 110, 0.04);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .sim-gender__card:focus-visible {
+      outline: 2px solid var(--color-accent);
+      outline-offset: 4px;
+    }
+
+    .sim-gender__icon {
+      color: var(--color-accent);
+      opacity: 0.9;
+    }
+
+    .sim-gender__label {
+      font-family: var(--font-display);
+      font-size: var(--text-xl);
+      letter-spacing: 0.02em;
+    }
+
+    .sim-gender__desc {
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+      line-height: 1.6;
+    }
+
+    .sim-gender__arrow {
+      color: var(--color-accent);
+      opacity: 0;
+      transform: translateX(-8px);
+      transition: all var(--duration-normal) var(--ease-out);
+    }
+
+    .sim-gender__card:hover .sim-gender__arrow {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* --- Zone principale (cach&eacute;e par d&eacute;faut) --- */
+    .simulator {
+      padding: var(--space-xl) 0 var(--space-section);
+      display: none;
+    }
+
+    .simulator--visible {
+      display: block;
+    }
+
+    /* Bouton retour */
+    .sim-back {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+      background: none;
+      border: 1px solid var(--color-surface);
+      border-radius: var(--radius-sm);
+      padding: 8px 16px;
+      cursor: pointer;
+      margin-bottom: var(--space-lg);
+      transition: all var(--duration-fast) var(--ease-out);
+    }
+
+    .sim-back:hover {
+      color: var(--color-accent);
+      border-color: var(--color-accent);
+    }
+
+    .sim-back:focus-visible {
+      outline: 2px solid var(--color-accent);
+      outline-offset: 2px;
+    }
+
+    /* Badge genre actif */
+    .sim-gender-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      background-color: rgba(200, 164, 110, 0.12);
+      border: 1px solid rgba(200, 164, 110, 0.3);
+      border-radius: 999px;
+      font-size: var(--text-xs);
+      color: var(--color-accent);
+      font-weight: 500;
+      margin-bottom: var(--space-lg);
+      margin-left: var(--space-sm);
+    }
+
+    .sim-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-lg);
+      align-items: start;
+    }
+
+    /* Upload zone */
+    .sim-upload {
+      background-color: var(--color-bg-card);
+      border: 2px dashed var(--color-surface);
+      border-radius: var(--radius-md);
+      padding: var(--space-xl);
+      text-align: center;
+      cursor: pointer;
+      transition: all var(--duration-normal) var(--ease-out);
+      position: relative;
+      min-height: 350px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-sm);
+    }
+
+    .sim-upload:hover,
+    .sim-upload--drag {
+      border-color: var(--color-accent);
+      background-color: rgba(200, 164, 110, 0.05);
+    }
+
+    .sim-upload--has-image {
+      border-style: solid;
+      border-color: var(--color-accent);
+      padding: var(--space-sm);
+    }
+
+    .sim-upload__icon {
+      color: var(--color-text-subtle);
+      margin-bottom: var(--space-xs);
+    }
+
+    .sim-upload__title {
+      font-family: var(--font-display);
+      font-size: var(--text-lg);
+    }
+
+    .sim-upload__hint {
+      font-size: var(--text-xs);
+      color: var(--color-text-subtle);
+    }
+
+    .sim-upload__preview {
+      max-width: 100%;
+      max-height: 400px;
+      border-radius: var(--radius-sm);
+      object-fit: contain;
+    }
+
+    .sim-upload__change {
+      font-size: var(--text-xs);
+      color: var(--color-accent);
+      margin-top: var(--space-xs);
+      cursor: pointer;
+    }
+
+    .sim-upload input[type="file"] {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      cursor: pointer;
+    }
+
+    /* S&eacute;lection de coiffure */
+    .sim-styles {
+      background-color: var(--color-bg-card);
+      border: 1px solid var(--color-surface);
+      border-radius: var(--radius-md);
+      padding: var(--space-md);
+    }
+
+    .sim-styles__title {
+      font-family: var(--font-display);
+      font-size: var(--text-lg);
+      margin-bottom: var(--space-md);
+    }
+
+    .sim-styles__empty {
+      text-align: center;
+      padding: var(--space-xl) var(--space-md);
+      color: var(--color-text-subtle);
+      font-size: var(--text-sm);
+      line-height: 1.7;
+    }
+
+    .sim-styles__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-xs);
+      max-height: 500px;
+      overflow-y: auto;
+      padding-right: 4px;
+    }
+
+    .sim-style-card {
+      position: relative;
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: all var(--duration-fast) var(--ease-out);
+      aspect-ratio: 3 / 4;
+      background: none;
+      padding: 0;
+      color: inherit;
+      font: inherit;
+    }
+
+    .sim-style-card:hover {
+      border-color: var(--color-text-muted);
+    }
+
+    .sim-style-card:focus-visible {
+      outline: 2px solid var(--color-accent);
+      outline-offset: 2px;
+    }
+
+    .sim-style-card--selected {
+      border-color: var(--color-accent);
+      box-shadow: 0 0 0 2px rgba(200, 164, 110, 0.3);
+    }
+
+    .sim-style-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .sim-style-card__label {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 6px 8px;
+      background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+      font-size: 0.6875rem;
+      font-weight: 500;
+      text-align: center;
+    }
+
+    .sim-style-card__check {
+      position: absolute;
+      top: 6px;
+      right: 6px;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background-color: var(--color-accent);
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .sim-style-card--selected .sim-style-card__check {
+      display: flex;
+    }
+
+    /* Bouton g&eacute;n&eacute;rer */
+    .sim-actions {
+      margin-top: var(--space-lg);
+      text-align: center;
+    }
+
+    .sim-generate {
+      padding: 16px 48px;
+      font-size: var(--text-base);
+      min-height: 48px;
+    }
+
+    .sim-generate:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* R&eacute;sultat */
+    .sim-result {
+      margin-top: var(--space-xl);
+      text-align: center;
+      display: none;
+    }
+
+    .sim-result--visible {
+      display: block;
+    }
+
+    .sim-result__comparison {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-md);
+      max-width: 800px;
+      margin: 0 auto var(--space-lg);
+    }
+
+    .sim-result__card {
+      background-color: var(--color-bg-card);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid var(--color-surface);
+    }
+
+    .sim-result__card img {
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      object-fit: cover;
+    }
+
+    .sim-result__card-label {
+      padding: var(--space-sm);
+      text-align: center;
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+      font-weight: 500;
+    }
+
+    /* Loading */
+    .sim-loading {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-md);
+      padding: var(--space-xl);
+    }
+
+    .sim-loading--visible {
+      display: flex;
+    }
+
+    .sim-spinner {
+      width: 48px;
+      height: 48px;
+      border: 3px solid var(--color-surface);
+      border-top-color: var(--color-accent);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .sim-loading__text {
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+    }
+
+    /* Message d'erreur */
+    .sim-error {
+      display: none;
+      padding: var(--space-md);
+      background-color: rgba(220, 80, 80, 0.1);
+      border: 1px solid rgba(220, 80, 80, 0.3);
+      border-radius: var(--radius-md);
+      color: #dc5050;
+      font-size: var(--text-sm);
+      text-align: center;
+      margin-top: var(--space-md);
+    }
+
+    .sim-error--visible {
+      display: block;
+    }
+
+    /* CTA bas de page */
+    .sim-cta {
+      text-align: center;
+      padding: var(--space-xl) 0;
+      background-color: var(--color-bg-elevated);
+      margin-top: var(--space-lg);
+      border-radius: var(--radius-md);
+    }
+
+    .sim-cta__title {
+      font-family: var(--font-display);
+      font-size: var(--text-xl);
+      margin-bottom: var(--space-sm);
+    }
+
+    .sim-cta__text {
+      color: var(--color-text-muted);
+      font-size: var(--text-sm);
+      margin-bottom: var(--space-md);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .sim-gender__grid {
+        grid-template-columns: 1fr;
+        max-width: 360px;
+      }
+
+      .sim-gender__card {
+        min-height: 200px;
+        padding: var(--space-xl) var(--space-md);
+      }
+
+      .sim-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .sim-styles__grid {
+        grid-template-columns: repeat(3, 1fr);
+        max-height: 300px;
+      }
+
+      .sim-result__comparison {
+        grid-template-columns: 1fr;
+      }
+
+      .sim-steps {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .sim-styles__grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .sim-upload {
+        min-height: 250px;
+        padding: var(--space-md);
+      }
+
+      .sim-gender__card {
+        min-height: 160px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav" id="nav">
+    <div class="nav__container">
+      <a href="index.html" class="nav__logo">Estilo<span>.</span></a>
+      <button class="nav__toggle" id="navToggle" aria-label="Ouvrir le menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav__menu" id="navMenu" role="list">
+        <li><a href="index.html#about" class="nav__link">Le Salon</a></li>
+        <li><a href="index.html#team" class="nav__link">L'&Eacute;quipe</a></li>
+        <li><a href="index.html#services" class="nav__link">Services</a></li>
+        <li><a href="index.html#gallery" class="nav__link">Galerie</a></li>
+        <li><a href="produits.html" class="nav__link">Produits</a></li>
+        <li><a href="simulateur.html" class="nav__link nav__link--active">Simulateur</a></li>
+        <li><a href="index.html#hours" class="nav__link">Horaires</a></li>
+        <li><a href="index.html#contact" class="nav__link nav__link--cta">R&eacute;server</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="sim-hero">
+    <div class="container">
+      <span class="section-label">Intelligence Artificielle</span>
+      <h1 class="section-title">Simulateur de <em>Coiffure</em></h1>
+      <p class="sim-hero__subtitle">Visualisez votre nouvelle coiffure avant de r&eacute;server. Choisissez votre cat&eacute;gorie, uploadez votre photo, et notre IA g&eacute;n&egrave;re le r&eacute;sultat en quelques secondes.</p>
+
+      <div class="sim-steps">
+        <div class="sim-step">
+          <span class="sim-step__number">1</span>
+          <span>Homme ou Femme</span>
+        </div>
+        <div class="sim-step">
+          <span class="sim-step__number">2</span>
+          <span>Uploadez votre photo</span>
+        </div>
+        <div class="sim-step">
+          <span class="sim-step__number">3</span>
+          <span>Choisissez un style</span>
+        </div>
+        <div class="sim-step">
+          <span class="sim-step__number">4</span>
+          <span>Visualisez le r&eacute;sultat</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- &Eacute;tape 1 : S&eacute;lection du genre -->
+  <section class="sim-gender" id="genderSection">
+    <div class="container">
+      <h2 class="sim-gender__title">Pour qui est cette <em>coiffure</em> ?</h2>
+      <p class="sim-gender__subtitle">S&eacute;lectionnez votre cat&eacute;gorie pour d&eacute;couvrir les styles disponibles</p>
+
+      <div class="sim-gender__grid">
+        <!-- Homme -->
+        <button type="button" class="sim-gender__card" id="genderHomme" aria-label="Coiffures Homme">
+          <div class="sim-gender__icon">
+            <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" width="72" height="72">
+              <circle cx="32" cy="20" r="10"/>
+              <path d="M16 52c0-8.8 7.2-16 16-16s16 7.2 16 16"/>
+              <path d="M22 18c0-6 4-12 10-12s10 6 10 12" stroke-width="2.5"/>
+            </svg>
+          </div>
+          <span class="sim-gender__label">Homme</span>
+          <span class="sim-gender__desc">Coupes, d&eacute;grad&eacute;s, styles masculins</span>
+          <span class="sim-gender__arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+              <path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+        </button>
+
+        <!-- Femme -->
+        <button type="button" class="sim-gender__card" id="genderFemme" aria-label="Coiffures Femme">
+          <div class="sim-gender__icon">
+            <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" width="72" height="72">
+              <circle cx="32" cy="20" r="10"/>
+              <path d="M16 52c0-8.8 7.2-16 16-16s16 7.2 16 16"/>
+              <path d="M20 20c-2-10 4-16 12-16s14 6 12 16" stroke-width="2.5"/>
+              <path d="M18 16c-2 4-2 10 0 14" stroke-width="2"/>
+              <path d="M46 16c2 4 2 10 0 14" stroke-width="2"/>
+            </svg>
+          </div>
+          <span class="sim-gender__label">Femme</span>
+          <span class="sim-gender__desc">Colorations, coiffures, styles f&eacute;minins</span>
+          <span class="sim-gender__arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+              <path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- &Eacute;tape 2-4 : Simulateur (cach&eacute; par d&eacute;faut) -->
+  <section class="simulator" id="simulatorSection">
+    <div class="container">
+
+      <div style="display: flex; align-items: center; flex-wrap: wrap;">
+        <button type="button" class="sim-back" id="backBtn" aria-label="Retour au choix de cat&eacute;gorie">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+            <path d="M19 12H5M12 19l-7-7 7-7" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Retour
+        </button>
+        <span class="sim-gender-badge" id="genderBadge"></span>
+      </div>
+
+      <div class="sim-layout">
+
+        <!-- Colonne gauche : upload -->
+        <div>
+          <div class="sim-upload" id="uploadZone">
+            <input type="file" id="fileInput" accept="image/jpeg,image/png,image/webp" aria-label="Choisir une photo">
+            <div id="uploadPlaceholder">
+              <div class="sim-upload__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="56" height="56">
+                  <circle cx="12" cy="8" r="4"/>
+                  <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+                </svg>
+              </div>
+              <p class="sim-upload__title">Votre photo</p>
+              <p class="sim-upload__hint">Glissez-d&eacute;posez ou cliquez pour choisir<br>JPG, PNG ou WebP &bull; Max 10 Mo</p>
+            </div>
+            <img id="uploadPreview" class="sim-upload__preview" alt="Votre photo" hidden>
+            <p id="uploadChange" class="sim-upload__change" hidden>Cliquer pour changer de photo</p>
+          </div>
+        </div>
+
+        <!-- Colonne droite : styles -->
+        <div class="sim-styles">
+          <h2 class="sim-styles__title" id="stylesTitle">Choisissez un style</h2>
+          <div class="sim-styles__grid" id="stylesGrid">
+            <!-- Rempli dynamiquement -->
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Bouton g&eacute;n&eacute;rer -->
+      <div class="sim-actions">
+        <button class="btn btn--primary sim-generate" id="generateBtn" disabled>
+          Visualiser ma coiffure
+        </button>
+      </div>
+
+      <!-- Erreur -->
+      <div class="sim-error" id="errorMsg" role="alert"></div>
+
+      <!-- Loading -->
+      <div class="sim-loading" id="loadingZone" aria-live="polite">
+        <div class="sim-spinner" aria-hidden="true"></div>
+        <p class="sim-loading__text" id="loadingText">Notre IA travaille sur votre nouvelle coiffure...</p>
+      </div>
+
+      <!-- R&eacute;sultat -->
+      <div class="sim-result" id="resultZone">
+        <span class="section-label">R&eacute;sultat</span>
+        <h2 class="section-title">Votre <em>Transformation</em></h2>
+
+        <div class="sim-result__comparison">
+          <div class="sim-result__card">
+            <img id="resultBefore" alt="Avant" src="">
+            <p class="sim-result__card-label">Avant</p>
+          </div>
+          <div class="sim-result__card">
+            <img id="resultAfter" alt="Apr&egrave;s">
+            <p class="sim-result__card-label">Apr&egrave;s — IA Estilo</p>
+          </div>
+        </div>
+
+        <div class="sim-cta">
+          <h3 class="sim-cta__title">Vous aimez le r&eacute;sultat ?</h3>
+          <p class="sim-cta__text">R&eacute;servez d&egrave;s maintenant et montrez cette image &agrave; votre coiffeur.</p>
+          <a href="index.html#contact" class="btn btn--primary">R&eacute;server un rendez-vous</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a href="index.html" class="footer__logo">Estilo<span>.</span></a>
+          <p class="footer__tagline">L'art de sublimer votre style</p>
+        </div>
+        <nav class="footer__nav" aria-label="Navigation pied de page">
+          <a href="index.html#about">Le Salon</a>
+          <a href="index.html#team">L'&Eacute;quipe</a>
+          <a href="index.html#services">Services</a>
+          <a href="index.html#gallery">Galerie</a>
+          <a href="produits.html">Produits</a>
+          <a href="simulateur.html">Simulateur</a>
+          <a href="index.html#hours">Horaires</a>
+          <a href="index.html#contact">Contact</a>
+        </nav>
+        <div class="footer__social">
+          <a href="https://www.facebook.com/profile.php?id=100063612851762" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+              <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>&copy; 2026 Estilo Coiffure. Tous droits r&eacute;serv&eacute;s.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/simulator.js"></script>
+</body>
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Estilo Coiffure — Nos produits professionnels de soins capillaires. Shampooings, soins, huiles et accessoires disponibles en salon.">
+  <title>Produits | Estilo Coiffure</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css?v=20260501-1">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230e0e0e'/%3E%3Ctext x='50%25' y='56%25' text-anchor='middle' font-family='Georgia, serif' font-size='34' fill='%23c8a46e'%3EE%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav" id="nav">
+    <div class="nav__container">
+      <a href="index.html" class="nav__logo">Estilo<span>.</span></a>
+      <button class="nav__toggle" id="navToggle" aria-label="Ouvrir le menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav__menu" id="navMenu" role="list">
+        <li><a href="index.html#about" class="nav__link">Le Salon</a></li>
+        <li><a href="index.html#team" class="nav__link">L'&Eacute;quipe</a></li>
+        <li><a href="index.html#services" class="nav__link">Services</a></li>
+        <li><a href="index.html#gallery" class="nav__link">Galerie</a></li>
+        <li><a href="produits.html" class="nav__link nav__link--active">Produits</a></li>
+        <li><a href="simulateur.html" class="nav__link">Simulateur</a></li>
+        <li><a href="index.html#hours" class="nav__link">Horaires</a></li>
+        <li><a href="index.html#contact" class="nav__link nav__link--cta">R&eacute;server</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero produits -->
+  <section class="products-hero">
+    <div class="container">
+      <span class="section-label">Boutique</span>
+      <h1 class="section-title">Nos <em>Produits</em></h1>
+      <p class="products-hero__subtitle">Explorez notre catalogue complet de soins capillaires professionnels, synchronis&eacute; avec la boutique Estilo.</p>
+    </div>
+  </section>
+
+  <!-- Filtres -->
+  <section class="products-filters" aria-label="Filtrer les produits">
+    <div class="container">
+      <div class="filters__toolbar">
+        <label class="products-search" for="productsSearch">
+          <span class="products-search__label">Recherche</span>
+          <input
+            type="search"
+            id="productsSearch"
+            class="products-search__input"
+            placeholder="Nom, marque ou type de produit"
+            autocomplete="off"
+          >
+        </label>
+
+        <label class="products-sort" for="productsSort">
+          <span class="products-sort__label">Trier par</span>
+          <select id="productsSort" class="products-sort__select">
+            <option value="default">Ordre du catalogue</option>
+            <option value="name-asc">Nom A–Z</option>
+            <option value="name-desc">Nom Z–A</option>
+            <option value="price-asc">Prix croissant</option>
+            <option value="price-desc">Prix d&eacute;croissant</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="filters__bar">
+        <button type="button" class="filter-btn filter-btn--active" data-filter="all" data-label="Tous" aria-pressed="true">Tous</button>
+        <button type="button" class="filter-btn" data-filter="shampoing" data-label="Shampooings" aria-pressed="false">Shampooings</button>
+        <button type="button" class="filter-btn" data-filter="soin" data-label="Soins" aria-pressed="false">Soins</button>
+        <button type="button" class="filter-btn" data-filter="huile" data-label="Huiles" aria-pressed="false">Huiles</button>
+        <button type="button" class="filter-btn" data-filter="accessoire" data-label="Accessoires" aria-pressed="false">Accessoires</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Grille produits -->
+  <section class="products" aria-label="Liste des produits">
+    <div class="container">
+      <div class="products__summary">
+        <div class="products__summary-copy">
+          <span class="section-label">Catalogue</span>
+          <h2 class="products__summary-title">Produits disponibles</h2>
+        </div>
+        <div class="products__summary-meta">
+          <p class="products__count" id="productsCount" aria-live="polite">Chargement du catalogue...</p>
+          <p class="products__page-info" id="productsPageInfo" aria-live="polite"></p>
+        </div>
+      </div>
+
+      <div class="products__grid" id="productsGrid"></div>
+
+      <p class="products__empty" id="productsEmpty" hidden>Aucun produit ne correspond &agrave; ce filtre pour le moment.</p>
+
+      <nav class="products__pagination" id="productsPagination" aria-label="Pagination des produits" hidden>
+        <button type="button" class="pagination__btn" id="paginationPrev">Pr&eacute;c&eacute;dent</button>
+        <div class="pagination__list" id="paginationList"></div>
+        <button type="button" class="pagination__btn" id="paginationNext">Suivant</button>
+      </nav>
+
+      <!-- Mention disponibilit&eacute; -->
+      <div class="products__notice">
+        <p>
+          Tous nos produits sont disponibles en salon. Appelez-nous au
+          <a href="tel:+14182040777">(418) 204-0777</a> pour r&eacute;server un article,
+          demander conseil ou ouvrir la boutique en ligne sur
+          <a href="https://estiloreynagaboutique.myshopify.com/es/collections/all" target="_blank" rel="noopener noreferrer">Shopify</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a href="index.html" class="footer__logo">Estilo<span>.</span></a>
+          <p class="footer__tagline">L'art de sublimer votre style</p>
+        </div>
+        <nav class="footer__nav" aria-label="Navigation pied de page">
+          <a href="index.html#about">Le Salon</a>
+          <a href="index.html#team">L'&Eacute;quipe</a>
+          <a href="index.html#services">Services</a>
+          <a href="index.html#gallery">Galerie</a>
+          <a href="produits.html">Produits</a>
+          <a href="simulateur.html">Simulateur</a>
+          <a href="index.html#hours">Horaires</a>
+          <a href="index.html#contact">Contact</a>
+        </nav>
+        <div class="footer__social">
+          <a href="https://www.facebook.com/profile.php?id=100063612851762" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+              <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>&copy; 2026 Estilo Coiffure. Tous droits r&eacute;serv&eacute;s.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/products-data.js"></script>
+  <script src="js/products.js"></script>
+</body>
+</html>

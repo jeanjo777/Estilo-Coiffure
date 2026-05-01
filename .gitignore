@@ -1,0 +1,13 @@
+.env
+.env.local
+node_modules/
+thuki/
+.playwright-mcp/
+exports/
+server.out
+server.err
+
+# Screenshots temporaires
+produits-*.png
+products-*.png
+simulateur-*.png
