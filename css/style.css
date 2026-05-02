@@ -606,6 +606,10 @@ ul {
   padding: var(--space-section) 0;
 }
 
+.hero-scrollstop + .about {
+  padding-top: 0;
+}
+
 .about__grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -2187,7 +2191,7 @@ ul {
 /* --- Empêcher le débordement horizontal --- */
 html,
 body {
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 .about__accent {
