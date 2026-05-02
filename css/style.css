@@ -607,7 +607,7 @@ ul {
 }
 
 .hero-scrollstop + .about {
-  padding-top: 0;
+  padding-top: clamp(2rem, 4vw, 3.5rem);
 }
 
 .about__grid {
