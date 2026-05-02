@@ -1,5 +1,5 @@
-/* ============================================
-   ESTILO COIFFURE — Design System
+﻿/* ============================================
+   ESTILO COIFFURE â€” Design System
    Dark luxury salon theme
    ============================================ */
 
@@ -675,7 +675,7 @@ ul {
 }
 
 /* ============================================
-   TEAM — Marquee infini
+   TEAM â€” Marquee infini
    ============================================ */
 .team {
   padding: var(--space-section) 0 var(--space-xl);
@@ -683,7 +683,7 @@ ul {
   overflow: hidden;
 }
 
-/* Bande défilante */
+/* Bande dÃ©filante */
 .marquee {
   position: relative;
   width: 100%;
@@ -708,7 +708,7 @@ ul {
     transform: translateX(0);
   }
   100% {
-    /* 5 cartes * (280px + gap) = ~50% de la piste dupliquée */
+    /* 5 cartes * (280px + gap) = ~50% de la piste dupliquÃ©e */
     transform: translateX(calc(-50% - var(--space-lg) / 2));
   }
 }
@@ -1162,7 +1162,7 @@ ul {
 }
 
 /* ============================================
-   PRODUITS (page dédiée)
+   PRODUITS (page dÃ©diÃ©e)
    ============================================ */
 .products-hero {
   padding: calc(var(--nav-height) + var(--space-2xl)) 0 var(--space-xl);
@@ -1671,7 +1671,7 @@ ul {
   }
 }
 
-/* --- 1440px – écrans larges --- */
+/* --- 1440px â€“ Ã©crans larges --- */
 @media (min-width: 1440px) {
   .container {
     max-width: 1320px;
@@ -1682,14 +1682,14 @@ ul {
   }
 }
 
-/* --- 1280px – laptop large --- */
+/* --- 1280px â€“ laptop large --- */
 @media (max-width: 1280px) {
   .gallery__grid {
     columns: 3 240px;
   }
 }
 
-/* --- 1024px – tablette paysage / petit laptop --- */
+/* --- 1024px â€“ tablette paysage / petit laptop --- */
 @media (max-width: 1024px) {
   .services__grid {
     grid-template-columns: repeat(2, 1fr);
@@ -1717,7 +1717,7 @@ ul {
   }
 }
 
-/* --- 768px – tablette portrait --- */
+/* --- 768px â€“ tablette portrait --- */
 @media (max-width: 768px) {
   .team__member {
     width: 220px;
@@ -1837,7 +1837,7 @@ ul {
     min-height: 280px;
   }
 
-  /* Formulaire — hauteur tactile */
+  /* Formulaire â€” hauteur tactile */
   .form__input {
     padding: 14px 16px;
     font-size: var(--text-base);
@@ -1883,7 +1883,7 @@ ul {
   }
 }
 
-/* --- 480px – grand mobile --- */
+/* --- 480px â€“ grand mobile --- */
 @media (max-width: 480px) {
   .container {
     padding: 0 var(--space-sm);
@@ -2004,7 +2004,7 @@ ul {
   }
 }
 
-/* --- 375px – iPhone standard --- */
+/* --- 375px â€“ iPhone standard --- */
 @media (max-width: 375px) {
   :root {
     --nav-height: 64px;
@@ -2095,7 +2095,7 @@ ul {
   }
 }
 
-/* --- 320px – plus petit écran supporté --- */
+/* --- 320px â€“ plus petit Ã©cran supportÃ© --- */
 @media (max-width: 320px) {
   .container {
     padding: 0 8px;
@@ -2168,7 +2168,7 @@ ul {
   }
 }
 
-/* --- Hauteur limitée (paysage mobile) --- */
+/* --- Hauteur limitÃ©e (paysage mobile) --- */
 @media (max-height: 600px) and (orientation: landscape) {
   .hero {
     min-height: auto;
@@ -2188,7 +2188,124 @@ ul {
   }
 }
 
-/* --- Empêcher le débordement horizontal --- */
+/* --- Smartphone hardening: hero premium --- */
+@media (max-width: 640px) {
+  .hero-scrollstop {
+    min-height: auto;
+  }
+
+  .hero.hero--premium {
+    position: relative;
+    top: auto;
+    height: auto;
+    min-height: auto;
+    justify-content: flex-start;
+    align-items: center;
+    padding: calc(var(--nav-height) + 1.25rem) 0 clamp(1.5rem, 5vw, 2.25rem);
+  }
+
+  .hero__video {
+    transform: none;
+    object-position: 58% center;
+  }
+
+  .hero__content {
+    width: min(100%, 22rem);
+    margin: 0 auto;
+    padding: 0 1rem;
+    transform: none;
+  }
+
+  .hero__tagline {
+    margin-bottom: 1rem;
+    letter-spacing: 0.22em;
+  }
+
+  .hero__title {
+    font-size: clamp(3.1rem, 15vw, 4.6rem);
+    margin-bottom: 0.75rem;
+  }
+
+  .hero__subtitle {
+    margin-bottom: 1.2rem;
+  }
+
+  .hero__lead {
+    max-width: 18ch;
+    margin-bottom: 1.4rem;
+    letter-spacing: 0.02em;
+    line-height: 1.55;
+  }
+
+  .hero__actions {
+    width: min(100%, 18rem);
+    margin: 0 auto;
+    padding: 0;
+    gap: 0.875rem;
+  }
+
+  .hero__spotlight {
+    width: min(21.5rem, calc(100% - 24px));
+    max-width: calc(100% - 24px);
+    margin: 1.25rem auto 0;
+    padding: 1.15rem 1rem 1rem;
+    border-radius: 22px;
+  }
+
+  .hero__spotlight-label {
+    margin-bottom: 0.75rem;
+    letter-spacing: 0.18em;
+  }
+
+  .hero__spotlight-title {
+    font-size: clamp(2rem, 9vw, 2.45rem);
+    line-height: 0.96;
+    margin-bottom: 0.75rem;
+  }
+
+  .hero__spotlight-copy {
+    font-size: 0.98rem;
+    line-height: 1.55;
+  }
+
+  .hero__scroll {
+    display: none;
+  }
+
+  .hero__frame {
+    inset: 10px;
+  }
+
+  .hero-scrollstop + .about {
+    padding-top: clamp(3rem, 9vw, 4rem);
+  }
+}
+
+@media (max-width: 420px) {
+  .hero.hero--premium {
+    padding-top: calc(var(--nav-height) + 1rem);
+  }
+
+  .hero__content {
+    width: min(100%, 20.5rem);
+    padding: 0 0.85rem;
+  }
+
+  .hero__title {
+    font-size: clamp(2.8rem, 14vw, 4rem);
+  }
+
+  .hero__spotlight {
+    width: calc(100% - 20px);
+    max-width: calc(100% - 20px);
+    padding: 1rem 0.9rem 0.95rem;
+  }
+
+  .hero__spotlight-copy {
+    font-size: 0.93rem;
+  }
+}
+/* --- EmpÃªcher le dÃ©bordement horizontal --- */
 html,
 body {
   overflow-x: clip;
@@ -2198,7 +2315,7 @@ body {
   overflow: hidden;
 }
 
-/* Marquee ne déborde pas (déjà géré par overflow:hidden sur .team mais sécurité) */
+/* Marquee ne dÃ©borde pas (dÃ©jÃ  gÃ©rÃ© par overflow:hidden sur .team mais sÃ©curitÃ©) */
 .marquee {
   max-width: 100vw;
 }
@@ -2236,3 +2353,5 @@ body {
     justify-content: center;
   }
 }
+
+
