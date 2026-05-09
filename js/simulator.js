@@ -184,9 +184,7 @@
     selectGender('homme');
   });
 
-  genderFemme.addEventListener('click', function () {
-    selectGender('femme');
-  });
+  // Femme redirige vers simulateur-femme.html (lien <a>, pas de JS nécessaire)
 
   // --- Retour ---
   backBtn.addEventListener('click', function () {

@@ -1,0 +1,44 @@
+{
+  "femme": {
+    "box-braids-longues": {
+      "label": "Box braids longues",
+      "prompt": "Apply neat long box braids with defined sections, elegant salon finish, realistic braid texture."
+    },
+    "box-braids-courtes": {
+      "label": "Box braids courtes",
+      "prompt": "Apply short box braids with clean sections and a polished salon result."
+    },
+    "knotless-braids": {
+      "label": "Knotless braids",
+      "prompt": "Apply natural looking knotless braids with a refined luxury salon finish."
+    },
+    "fulani-braids": {
+      "label": "Fulani braids",
+      "prompt": "Apply Fulani braids with face-framing braids, a precise center structure, and tasteful detail."
+    },
+    "cornrows-simples": {
+      "label": "Cornrows simples",
+      "prompt": "Apply straight back cornrows that are neat, symmetrical, and photorealistic."
+    },
+    "vanille-twist": {
+      "label": "Vanille / Twist",
+      "prompt": "Apply defined two-strand twists with realistic texture, volume, and a salon-quality finish."
+    },
+    "locks-starter": {
+      "label": "Starter locks",
+      "prompt": "Apply clean starter locks with realistic parting and a soft natural finish."
+    },
+    "tissage-volume": {
+      "label": "Tissage volume",
+      "prompt": "Apply a voluminous weave hairstyle with soft movement, natural blending, and a premium beauty editorial feel."
+    },
+    "extensions-lisses": {
+      "label": "Extensions lisses",
+      "prompt": "Apply sleek blended hair extensions with smooth shine and realistic salon styling."
+    },
+    "brushing-lisse": {
+      "label": "Brushing lisse",
+      "prompt": "Apply a polished straight blowout hairstyle with smooth shine, soft movement, realistic salon finish."
+    }
+  }
+}
